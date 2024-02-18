@@ -4,3 +4,7 @@
 ```
 python3 -m venv .venv
 ```
+### 2. activate virtual environment using terminal 
+```
+source .venv/bin/activate
+```
