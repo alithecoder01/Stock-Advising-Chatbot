@@ -8,3 +8,7 @@ python3 -m venv .venv
 ```
 source .venv/bin/activate
 ```
+### 3. install required packages using pip in terminal 
+```
+pip install langchain opanai langchain-openai ... 
+```
