@@ -11,7 +11,7 @@ source .venv/bin/activate
 
 ### 3. install required packages using pip in terminal 
 ```
-pip install requests python-dotenv
+pip install requests python-dotenv yfinance
 ```
 ### 4. create .env file to save the api keys 
 ```
