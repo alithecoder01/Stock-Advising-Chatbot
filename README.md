@@ -8,7 +8,14 @@ python3 -m venv .venv
 ```
 source .venv/bin/activate
 ```
+
 ### 3. install required packages using pip in terminal 
 ```
-pip install langchain opanai langchain-openai ... 
+pip install langchain opanai langchain-openai requests 
 ```
+### 4. create .env file to save the api keys 
+```
+OPENAI_API_KEY="Your Key"
+SERPAPI_API_KEY="Your Key"
+```
+
