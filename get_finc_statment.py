@@ -2,10 +2,10 @@ from yahooquery import Ticker
 
 
 
-filePath = "/Users/3lihasan/Desktop/test.txt"
+
 
 # get the company info, like balance sheet and income statment .. ans save them in the .txt file
-def get_financial_statements(ticker):
+def get_financial_statements(ticker,filePath):
     # Create a Ticker object
     company = Ticker(ticker)
 

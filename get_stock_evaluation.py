@@ -1,8 +1,8 @@
 import yfinance as yf
 
-filePath = "/Users/3lihasan/Desktop/test.txt"
+
 # function for getting the evaluation of the stock selected
-def get_stock_evolution(company_name, period="1y"):
+def get_stock_evolution(filePath ,company_name, period="1y"):
     # Get the stock info
     stock = yf.Ticker(company_name)
 

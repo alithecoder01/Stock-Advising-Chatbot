@@ -17,11 +17,11 @@ def get_comp_news(company_name):
 
     return data.get('news_results')
 
-filePath = "/Users/3lihasan/Desktop/test.txt"
+
 
 # function for saving the news in .txt file
-def save_news_txt(news, filename):
-    with open(filename, 'w') as file:
+def save_news_txt(news, filePath):
+    with open(filePath, 'w') as file:
         for news_item in news:
             if news_item is not None:
                 title = news_item.get('title', 'No title')

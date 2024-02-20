@@ -1,4 +1,4 @@
-# 499-project
+# 499-Project
 
 ### 1. Create a virtual environment using terminal 
 ```
