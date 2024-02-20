@@ -4,12 +4,12 @@
 ```
 python3 -m venv .venv
 ```
-### 2. activate virtual environment using terminal 
+### 2. Activate virtual environment using terminal 
 ```
 source .venv/bin/activate
 ```
 
-### 3. install required packages using pip in terminal 
+### 3. Install required packages using pip in terminal 
 ```
 pip install requests python-dotenv yfinance yahooquery
 ```
@@ -27,6 +27,12 @@ OPENAI_API_KEY="Your Key"
 SERPAPI_API_KEY="Your Key"
 ```
 
-### 5. Create code that will retrive the news from SERP, click here for resource code [Code](get_news.py)
+### 5. Create code that will retrieve the news from SERP, click here for resource code [Code](get_news.py)
+
+### 6. Create code that retrieves the evaluation of the stock selected, click here for resource code [Code](get_stock_evaluation.py)
+
+### 7. Create code that gets the company info, like the balance sheet and income statement, click here for resource code [Code](get_finc_statment.py)
+
+### 7. Create code that adds all the 3 methods together, click here for resource code [Code](get_all_data.py)
 
 
