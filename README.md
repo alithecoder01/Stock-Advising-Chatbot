@@ -13,9 +13,19 @@ source .venv/bin/activate
 ```
 pip install requests python-dotenv yfinance
 ```
+
+> [!IMPORTANT]
+> In the YF files in utils.py update this code to avoid FutureWarning  
+>```
+>From df.index += _pd.TimedeltaIndex(dst_error_hours, 'h')
+>To df.index += _pd.to_timedelta(dst_error_hours, 'h')
+>```
+
 ### 4. create .env file to save the api keys 
 ```
 OPENAI_API_KEY="Your Key"
 SERPAPI_API_KEY="Your Key"
 ```
+
+### 5. 
 
