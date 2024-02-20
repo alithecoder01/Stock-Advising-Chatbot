@@ -21,12 +21,12 @@ pip install requests python-dotenv yfinance yahooquery
 >To df.index += _pd.to_timedelta(dst_error_hours, 'h')
 >```
 
-### 4. create .env file to save the api keys 
+### 4. Create .env file to save the api keys 
 ```
 OPENAI_API_KEY="Your Key"
 SERPAPI_API_KEY="Your Key"
 ```
 
-### 5. Create the code that will retrive the news from SERPAPI, click here for resource code [Code](get_news.py)
+### 5. Create code that will retrive the news from SERP, click here for resource code [Code](get_news.py)
 
 
