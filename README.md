@@ -27,5 +27,6 @@ OPENAI_API_KEY="Your Key"
 SERPAPI_API_KEY="Your Key"
 ```
 
-### 5. 
+### 5. Create the code that will retrive the news from SERPAPI [Code](get_news.py)
+
 
