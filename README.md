@@ -31,7 +31,7 @@ SERPAPI_API_KEY="Your Key"
 
 ### 6. Create code that retrieves the evaluation of the stock selected, click here for resource code [Code](get_stock_evaluation.py)
 
-### 7. Create code that gets the company info, like the balance sheet and income statement, click here for resource code [Code](get_finc_statment.py)
+### 7. Create code that gets the company info, balance sheet etc .. , click here for resource code [Code](get_finc_statment.py)
 
 ### 7. Create code that adds all the 3 methods together, click here for resource code [Code](get_all_data.py)
 
