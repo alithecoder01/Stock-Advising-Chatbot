@@ -11,7 +11,7 @@ source .venv/bin/activate
 
 ### 3. Install required packages using pip in terminal 
 ```
-pip install requests python-dotenv yfinance yahooquery
+pip install requests python-dotenv yfinance yahooquery langchain-openai
 ```
 
 > [!IMPORTANT]
