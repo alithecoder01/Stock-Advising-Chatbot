@@ -17,4 +17,4 @@ def get_stock_evolution(company_name, period="1y"):
         file.write(f"\nStock Evolution for {company_name}:\n")
         file.write(data_string)
         file.write("\n")
-
+        
