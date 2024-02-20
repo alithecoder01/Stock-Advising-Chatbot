@@ -14,4 +14,3 @@ def get_all_data(company_name, company_ticker, period="1y", filename=filePath):
 
     get_financial_statements(company_ticker,filePath)
 
-get_all_data("apple","AAPL",filename=filePath)
