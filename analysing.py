@@ -14,4 +14,42 @@ def analyse(request):
             content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
         )
     ]
+
+    functions=[{
+            "name": "get_all_data",
+            "description":
+            "Get financial data on a specific company for investment purposes",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company_name": {
+                        "type":
+                        "string",
+                        "description":
+                        "The name of the company",
+                    },
+                    "company_ticker": {
+                        "type":
+                        "string",
+                        "description":
+                        "the ticker of the stock of the company"
+                    },
+                    "period": {
+                        "type": "string",
+                        "description": "The period of analysis"
+                    },
+                    "filename": {
+                        "type": "string",
+                        "description": "the filename to store data"
+                    }
+                },
+                "required": ["company_name", "company_ticker"],
+            },
+        }],
     
+    function_call={"name": "get_all_data"},
+    
+    response = chat.invoke(messages)
+
+    print(response.content)
+
