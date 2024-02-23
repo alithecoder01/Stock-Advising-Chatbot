@@ -49,7 +49,10 @@ def analyse(request):
     
     function_call={"name": "get_all_data"},
     
-    response = chat.invoke(messages)
+    response = chat.invoke(messages).dict()
+    
 
-    print(response.content)
+    print(response.get("content"))
+
+analyse("apple")
 
