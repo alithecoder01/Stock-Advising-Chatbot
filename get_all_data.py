@@ -13,4 +13,3 @@ def get_all_data(company_name, company_ticker, period="1y", filename=filePath):
     get_stock_evolution(filePath,company_ticker)
 
     get_financial_statements(company_ticker,filePath)
-
