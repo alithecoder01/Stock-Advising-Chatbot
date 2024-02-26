@@ -64,7 +64,7 @@ def analyse(request):
 
         with open(filePath, "r") as file:
             content = file.read()[:14000]
-
+        
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1)
         messages = [
             SystemMessage(
