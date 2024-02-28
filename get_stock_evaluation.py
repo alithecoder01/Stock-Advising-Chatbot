@@ -7,7 +7,7 @@ def get_stock_evolution(filePath ,company_name, period="4y"):
     stock = yf.Ticker(company_name)
 
     # Get historical stock data
-    hist = stock.history(period=period)
+    hist = stock.history(period="max")
 
     # Convert the DataFrame to a string
     data_string = hist.to_string()
