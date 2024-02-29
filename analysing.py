@@ -11,7 +11,7 @@ def analyse(request):
 
     messages = [
         SystemMessage(
-            content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticker"
+            content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticke. provide the period needed, if not mentioned in the request make it 1y by defaultr"
         ),
         HumanMessage(
             content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
@@ -59,8 +59,14 @@ def analyse(request):
         argument = json.loads(argument)
         company_name = argument["company_name"]
         company_ticker = argument["company_ticker"]
+        try:
+            period = argument["period"]
+        
+        except:
+            period = "1y"
 
-        get_all_data(company_name, company_ticker)
+
+        get_all_data(company_name, company_ticker, period)
 
         with open(filePath, "r") as file:
             content = file.read()[:14000]
@@ -71,7 +77,7 @@ def analyse(request):
                 content=f"""write a detailled investment about {company_name} stock thesis to answer
                       the user request. Provide numbers about {company_name} company to justify
                       your assertions, a lot ideally.
-                      Use the content provided in {content} to get the updated news and all the numbers of the company.
+                      Use the content provided in {content} to get the updated news and all the numbers of the company and give advice for short and long tirm.
 
                       give a financial advice according to the given information in {content}.
                       Never mention something like this:

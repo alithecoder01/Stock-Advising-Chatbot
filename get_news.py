@@ -11,6 +11,8 @@ def get_comp_news(company_name):
         "tbm": "nws",
         "q": company_name,
         "api_key": os.environ["SERPAPI_API_KEY"],
+        # "date_range": "2023-01-01:2023-01-31",
+        "period": "6y"
     }
     response = requests.get('https://serpapi.com/search', params=params)
     data = response.json()

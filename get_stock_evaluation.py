@@ -2,12 +2,12 @@ import yfinance as yf
 
 
 # function for getting the evaluation of the stock selected
-def get_stock_evolution(filePath ,company_name, period="4y"):
+def get_stock_evolution(filePath ,company_name, period):
     # Get the stock info
     stock = yf.Ticker(company_name)
 
     # Get historical stock data
-    hist = stock.history(period="max")
+    hist = stock.history(period=period)
 
     # Convert the DataFrame to a string
     data_string = hist.to_string()
