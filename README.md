@@ -33,6 +33,8 @@ SERPAPI_API_KEY="Your Key"
 
 ### 7. Create code that gets the company info, balance sheet etc .. , click here for resource code [Code](get_finc_statment.py)
 
-### 7. Create code that adds all the 3 methods together, click here for resource code [Code](get_all_data.py)
+### 8. Create code that adds all the 3 methods together, click here for resource code [Code](get_all_data.py)
+
+### 9. Create code for getting the company name, ticker and the respons, click here for resource code [Code](analysing.py)
 
 
