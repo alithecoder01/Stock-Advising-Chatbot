@@ -1,9 +1,6 @@
 from yahooquery import Ticker
 
 
-
-
-
 # get the company info, like balance sheet and income statment .. ans save them in the .txt file
 def get_financial_statements(ticker,filePath):
     # Create a Ticker object

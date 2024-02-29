@@ -7,7 +7,7 @@ filePath = "/Users/3lihasan/Desktop/test.txt"
 
 
 def analyse(request):
-    print(f"req conformation: {request}")
+    
 
     messages = [
         SystemMessage(
@@ -74,9 +74,9 @@ def analyse(request):
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1)
         messages = [
             SystemMessage(
-                content=f"""write a detailled investment about {company_name} stock thesis to answer
+                content=f"""Give  a detailled investment advice about {company_name} stock to answer
                       the user request. Provide numbers about {company_name} company to justify
-                      your assertions, a lot ideally.
+                      your assertions, a lot ideally. Mention if you recommend to but or wait.
                       Use the content provided in {content} to get the updated news and all the numbers of the company and give advice for short and long tirm.
 
                       give a financial advice according to the given information in {content}.
