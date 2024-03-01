@@ -66,6 +66,7 @@ def analyse(request):
             period = "1y"
 
 
+
         get_all_data(company_name, company_ticker, period)
 
         with open(filePath, "r") as file:
