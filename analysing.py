@@ -3,7 +3,7 @@ from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 from get_all_data import get_all_data
 
-filePath = "/Users/3lihasan/Desktop/test.txt"
+filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
 
 def analyse(request):
@@ -65,7 +65,7 @@ def analyse(request):
         except:
             period = "1y"
 
-        get_all_data(company_name, company_ticker, period)
+        get_all_data(company_name, company_ticker, period,filePath)
 
         with open(filePath, "r") as file:
             content = file.read()[:14000]
