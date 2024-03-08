@@ -69,6 +69,7 @@ def analyse(request):
 
         get_all_data(company_name, company_ticker, period,filePath)
 
+
         with open(filePath, "r") as file:
             content = file.read()[:14000]
         
