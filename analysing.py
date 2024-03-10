@@ -1,16 +1,8 @@
 import json
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
-import openai
 from get_all_data import get_all_data
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import LLMChain, ConversationChain, ConversationChain
-from langchain.prompts import (
-    ChatPromptTemplate,
-    HumanMessagePromptTemplate,
-    PromptTemplate,
-    SystemMessagePromptTemplate
-)
+
 
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
