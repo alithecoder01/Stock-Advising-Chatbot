@@ -1,10 +1,16 @@
 import json
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
+import openai
 from get_all_data import get_all_data
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import LLMChain, ConversationChain
-from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder,HumanMessagePromptTemplate
+from langchain.chains import LLMChain, ConversationChain, ConversationChain
+from langchain.prompts import (
+    ChatPromptTemplate,
+    HumanMessagePromptTemplate,
+    PromptTemplate,
+    SystemMessagePromptTemplate
+)
 
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
@@ -75,7 +81,7 @@ def analyse(request):
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1)
         messages = [
             SystemMessage(
-                content=f"""When user say Hi, replay with "Hello, How can i help you?" and if he give you the stock question conduct a concise analysis that includes financial data—such as Stock Evolution, balance sheet, cash flow statement, and income statement—and key valuation measures like P/E, P/B ratios, and dividend yield for {company_name}.
+                content=f"""Conduct a concise analysis that includes financial data—such as Stock Evolution, balance sheet, cash flow statement, and income statement—and key valuation measures like P/E, P/B ratios, and dividend yield for {company_name}.
                     Assess the financial health, operational performance, and market valuation, integrating an evaluation of recent news to identify significant opportunities and risks.
                     Summarize the findings to provide a clear investment recommendation advice, indicating whether investing in {company_name} is favorable or if caution is advised due to identified risks.
                     Your analysis should offer straightforward investment advice based on the comprehensive evaluation.
@@ -85,44 +91,9 @@ def analyse(request):
             ),
             HumanMessage(content="{request}"),
         ]
-
-        # prompt = ChatPromptTemplate(
-        #     messages=[
-        #         SystemMessage(
-        #             content=f""" when any one say Hi, replay with "Hello, How can i help you?" and if he give you the stock question conduct a concise analysis that includes financial data—such as Stock Evolution, balance sheet, cash flow statement, and income statement—and key valuation measures like P/E, P/B ratios, and dividend yield for {company_name}.
-        #             Assess the financial health, operational performance, and market valuation, integrating an evaluation of recent news to identify significant opportunities and risks.
-        #             Summarize the findings to provide a clear investment recommendation advice, indicating whether investing in {company_name} is favorable or if caution is advised due to identified risks.
-        #             Your analysis should offer straightforward investment advice based on the comprehensive evaluation.
-        #             mention the resons for the recommendation advice.
-        #             all the needed information are available in {content}
-        #         """
-        #         ),
-        #         MessagesPlaceholder(variable_name="chat_history"),
-        #         HumanMessagePromptTemplate.from_template("{request}")
-        #     ]
-        # )
-
-        # memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-        # conversation = LLMChain(
-        #     llm=model,
-        #     prompt=prompt,
-        #     verbose=True,
-        #     memory=memory
-        # )
-        # conversation({"request" : "{request}"})
-        
-
         analys_response = model.invoke(messages).dict()
 
-        # # memory = ConversationBufferMemory(memory_key="chat")
-        # # # memory.aload_memory_variables(inputs=request)
-        # # memory.chat_memory.add_user_message(request)
-        # # memory.chat_memory.add_ai_message(analys_response.get("content"))
-        # # # print(memory.abuffer)
-        # conversation.predict()
-        
-
-        return analys_response.get("content")
+    return analys_response.get("content")
 
 
 user = input()
