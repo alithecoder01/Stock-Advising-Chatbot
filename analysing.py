@@ -2,7 +2,8 @@ import json
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 from get_all_data import get_all_data
-
+from langchain.chains import ConversationChain
+from langchain.memory import ConversationBufferMemory
 
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
@@ -83,9 +84,18 @@ def analyse(request):
             ),
             HumanMessage(content="{request}"),
         ]
-        analys_response = model.invoke(messages).dict()
 
-    return analys_response.get("content")
+        chain = ConversationChain(
+            llm=model, memory=ConversationBufferMemory(), verbose=True
+        )
+
+        respons = chain.invoke(messages)
+
+        
+        # analys_response = model.invoke(messages).dict()
+        # return analys_response.get("content")
+
+        return respons.get("response")
 
 
 user = input()
