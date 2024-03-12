@@ -74,22 +74,25 @@ def analyse(request):
         with open(filePath, "r") as file:
             content = file.read()[:14000]
 
-        model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1)
+        model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
         message = [
             SystemMessage(
                 content="You are a helpful assistant"
             ),
-            HumanMessage(content="Hi"),
+            HumanMessage(content=request),
             AIMessage(content="Hello, How can i help you?"),
-            HumanMessage(content=request)
-        ]
-        respns = model.invoke(message).content
-        
-        while True:
-            message.append(respns)
             
+        ]
+        while True:
+            prm = HumanMessage(
+                content=request
+            )
+            message.append(prm)
+            respns = model.invoke(message).content
+            message.append(respns)
+            print(message)
 
-        return respns
+            return respns
         mem = ConversationBufferMemory()
 
         # chain = ConversationChain(llm=model, memory=mem, verbose=True)
