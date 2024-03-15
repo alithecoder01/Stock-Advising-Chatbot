@@ -69,7 +69,7 @@ def analyse():
             except:
                 period = "1y"
 
-            get_all_data(company_name, company_ticker, period, filePath)
+            # get_all_data(company_name, company_ticker, period, filePath)
         except:
             print("Not Founded")
 
@@ -96,10 +96,10 @@ def analyse():
         ]
 
         while True:
-            promp = HumanMessage(
+            prm = HumanMessage(
                 content=request
             )
-            message.append(promp)
+            message.append(prm)
             respns = model.invoke(message).content
             message.append(respns)
             print(message)
