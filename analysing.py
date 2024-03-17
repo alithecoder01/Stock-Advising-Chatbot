@@ -43,6 +43,7 @@ def analyse(request):
                     "required": ["company_name", "company_ticker"],
                 },
             }
+            
 
             function_call = {"name": "get_all_data"}
 
