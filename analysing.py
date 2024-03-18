@@ -102,7 +102,7 @@ def analyse(request):
             respns = model.invoke(message).content
             ai = AIMessage(content=respns)
             message.append(ai)
-            print(message)
+            # print(message)
             print(respns)
             request = input()
 
