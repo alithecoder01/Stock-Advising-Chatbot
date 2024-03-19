@@ -73,7 +73,7 @@ def analyse(request):
                         period = "1y"
                     
                     
-                    get_all_data(company_name, company_ticker, period, filePath)
+                    # get_all_data(company_name, company_ticker, period, filePath)
                 except:
                     print("Not Founded")
 
