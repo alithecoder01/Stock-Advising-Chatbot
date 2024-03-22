@@ -7,7 +7,7 @@ from get_all_data import get_all_data
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
 
-def analyse(request):
+async def analyse(request):
 
     while request != "bye":
 
@@ -103,8 +103,10 @@ def analyse(request):
             ai = AIMessage(content=respns)
             message.append(ai)
             # print(message)
-            print(respns)
+            return respns
+            
             request = input()
 
-# # user = input()
+
+# user = input()
 # analyse(user)
