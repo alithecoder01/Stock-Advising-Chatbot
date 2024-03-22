@@ -7,83 +7,76 @@ from get_all_data import get_all_data
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 
 
-def analyse(request):
+def analyse(request, History):
+    messages = [
+        SystemMessage(
+            content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticke. provide the period needed, if not mentioned in the request make it 1y by defaultr"
+        ),
+        HumanMessage(
+            content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
+        ),
+    ]
 
-    while request != "bye":
-
-        if request!="Hi" or request!="hi" or request!="Hello" or request!="hello" or request!="How are you" or request!="How are you?" :
-            messages = [
-                SystemMessage(
-                    content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticke. provide the period needed, if not mentioned in the request make it 1y by defaultr"
-                ),
-                HumanMessage(
-                    content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
-                ),
-            ]
-
-            functions = {
-                "name": "get_all_data",
-                "description": "Get financial data on a specific company for investment purposes",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "company_name": {
-                            "type": "string",
-                            "description": "The name of the company",
-                        },
-                        "company_ticker": {
-                            "type": "string",
-                            "description": "the ticker of the stock of the company",
-                        },
-                        "period": {
-                            "type": "string",
-                            "description": "The period of analysis",
-                        },
-                    },
-                    "required": ["company_name", "company_ticker"],
+    functions = {
+        "name": "get_all_data",
+        "description": "Get financial data on a specific company for investment purposes",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "company_name": {
+                    "type": "string",
+                    "description": "The name of the company",
                 },
-            }
-            
+                "company_ticker": {
+                    "type": "string",
+                    "description": "the ticker of the stock of the company",
+                },
+                "period": {"type": "string", "description": "The period of analysis"},
+                "filename": {
+                    "type": "string",
+                    "description": "the filename to store data",
+                },
+            },
+            "required": ["company_name", "company_ticker"],
+        },
+    }
 
-            function_call = {"name": "get_all_data"}
+    function_call = {"name": "get_all_data"}
 
-            model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.9)
-            model = model.bind(
-                functions=[dict(functions)], function_call=dict(function_call)
-            )
+    model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.9)
+    model = model.bind(functions=[dict(functions)], function_call=dict(function_call))
 
-            name_ticker_response = model.invoke(messages).dict()
+    name_ticker_response = model.invoke(messages).dict()
 
-            # To access the values use: response.get("additional_kwargs")["function_call"]
+    # To access the values use: response.get("additional_kwargs")["function_call"]
 
-            argument = name_ticker_response.get("additional_kwargs")["function_call"][
-                "arguments"
-            ]
+    argument = name_ticker_response.get("additional_kwargs")["function_call"][
+        "arguments"
+    ]
 
-            if argument:
-                # Parse the arguments from a JSON string to a Python dictionary
-                try:
-                    argument = json.loads(argument)
-                    company_name = argument["company_name"]
-                    company_ticker = argument["company_ticker"]
-                    try:
-                        period = argument["period"]
+    if argument:
+        # Parse the arguments from a JSON string to a Python dictionary
+        try:
+            argument = json.loads(argument)
+            company_name = argument["company_name"]
+            company_ticker = argument["company_ticker"]
+            try:
+                period = argument["period"]
 
-                    except:
-                        period = "1y"
-                    
-                    
-                    # get_all_data(company_name, company_ticker, period, filePath)
-                except:
-                    print("Not Founded")
+            except:
+                period = "1y"
 
-            with open(filePath, "r") as file:
-                content = file.read()[:14000]
+            get_all_data(company_name, company_ticker, period, filePath)
+        except:
+            print("Not Founded")
 
-            model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
-            message = [
-                SystemMessage(
-                    content=f"""You are a stock advisor.
+        with open(filePath, "r") as file:
+            content = file.read()[:14000]
+
+        model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
+        message = [
+            SystemMessage(
+                content=f"""You are a stock advisor.
                         
                             Answer any question that the user ask.
                         
@@ -94,21 +87,26 @@ def analyse(request):
                             Your analysis should offer straightforward investment advice based on the comprehensive evaluation.
                             All the needed information for the analysis are available in {content} .
                             """
-                ),
-            ]
+            ),
+        ]
+        for i in range(0, len(History), 2):
+            prompt = HumanMessage(content=History[i])
+            message.append(prompt)
+            response = AIMessage(content=History[i + 1])
+            message.append(response)
 
-            promp = HumanMessage(content=request)
-            message.append(promp)
-            respns = model.invoke(message).content
-            ai = AIMessage(content=respns)
-            message.append(ai)
-            # print(message)
-            print(respns)
-            request = input()
+        prompt = HumanMessage(content=request + content)
+        message.append(prompt)
+        respns = model.invoke(message).content
+        print(message)
+        return respns
 
 
-mess = [
-    
-]
-user = input()
-analyse(user)
+messages = []
+while True:
+
+    request = input()
+    response = analyse(request, messages)
+    print(response)
+    messages.append(request)
+    messages.append(response)

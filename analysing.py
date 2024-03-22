@@ -106,5 +106,5 @@ def analyse(request):
             print(respns)
             request = input()
 
-user = input()
-analyse(user)
+# # user = input()
+# analyse(user)
