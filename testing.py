@@ -102,11 +102,11 @@ def analyse(request, History):
         return respns
 
 
-messages = []
-while True:
+# messages = []
+# while True:
 
-    request = input()
-    response = analyse(request, messages)
-    print(response)
-    messages.append(request)
-    messages.append(response)
+#     request = input()
+#     response = analyse(request, messages)
+#     print(response)
+#     messages.append(request)
+#     messages.append(response)
