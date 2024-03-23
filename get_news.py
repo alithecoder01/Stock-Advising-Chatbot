@@ -16,8 +16,9 @@ def get_comp_news(company_name,period):
     }
     response = requests.get('https://serpapi.com/search', params=params)
     data = response.json()
+    news = data.get('news_results')
 
-    return data.get('news_results')
+    return news
 
 
 
