@@ -4,7 +4,7 @@ from get_stock_evaluation import get_stock_evolution
 
 
 def get_all_data(company_name, company_ticker, period, filename):
-    news = get_comp_news(company_name)
+    news = get_comp_news(company_name,period)
     if news:
         save_news_txt(news, filename)
     else:

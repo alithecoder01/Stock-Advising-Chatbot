@@ -95,10 +95,10 @@ def analyse(request, History):
             response = AIMessage(content=History[i + 1])
             message.append(response)
 
-        prompt = HumanMessage(content=request + content)
+        prompt = HumanMessage(content=request)
         message.append(prompt)
         respns = model.invoke(message).content
-        print(message)
+        # print(message)
         return respns
 
 
