@@ -1,9 +1,8 @@
 
 import os
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
+
 filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
 def get_comp_news(company_name="apple",period="1y"):
     # params used to structure the request to the API in a way that specifies exactly what information is being sought.
