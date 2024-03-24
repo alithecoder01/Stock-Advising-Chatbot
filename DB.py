@@ -1,10 +1,10 @@
+
 import os
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
 
-def get_comp_news(company_name,period):
+filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
+def get_comp_news(company_name="apple",period="1y"):
     # params used to structure the request to the API in a way that specifies exactly what information is being sought.
     params = {
         "engine": "google",
@@ -17,13 +17,6 @@ def get_comp_news(company_name,period):
     response = requests.get('https://serpapi.com/search', params=params)
     data = response.json()
     news = data.get('news_results')
-
-    return news
-
-
-
-# function for saving the news in .txt file
-def save_news_txt(news, filePath):
     with open(filePath, 'w') as file:
         for news_item in news:
             if news_item is not None:
