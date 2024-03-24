@@ -16,7 +16,6 @@ def analyse(request, History):
             content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
         ),
     ]
-
     functions = {
         "name": "get_all_data",
         "description": "Get financial data on a specific company for investment purposes",
