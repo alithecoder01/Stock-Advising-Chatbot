@@ -11,7 +11,7 @@ source .venv/bin/activate
 
 ### 3. Install required packages using pip in terminal 
 ```
-pip install requests python-dotenv yfinance yahooquery langchain-openai
+pip install requests python-dotenv yfinance yahooquery langchain-openai Flask "Flask[async]
 ```
 
 > [!IMPORTANT]
@@ -37,9 +37,6 @@ SERPAPI_API_KEY="Your Key"
 
 ### 9. Create code for getting the company name, ticker and the respons, click here for resource code [Code](analysing.py)
 
-### 10. Install Flask api packages with async
-```
-pip install Flask "Flask[async]"
-```
+
 
 
