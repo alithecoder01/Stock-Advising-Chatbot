@@ -24,7 +24,7 @@ pip install requests python-dotenv yfinance yahooquery langchain-openai Flask "F
 ### 4. Create .env file to save the api keys 
 ```
 OPENAI_API_KEY="Your Key"
-SERPAPI_API_KEY="Your Key"
+SERPAPI_API_KEY="Your Key" 
 ```
 
 ### 5. Create code that will retrieve the news from SERP, click here for resource code [Code](get_news.py)
