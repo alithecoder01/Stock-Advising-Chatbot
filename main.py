@@ -109,4 +109,3 @@ def analyse(request, History):
 #     print(response)
 #     messages.append(request)
 #     messages.append(response)
-
