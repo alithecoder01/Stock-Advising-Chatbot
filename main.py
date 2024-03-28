@@ -72,7 +72,7 @@ def analyse(request, History):
         except:
             print("Not Founded")
 
-        print(content)
+        
 
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
         message = [
