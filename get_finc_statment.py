@@ -18,14 +18,16 @@ def get_financial_statements(ticker,filePath):
         cash_flow = "None"
         income_statement = "None"
         valuation_measures = "None"
-
-    # Write data to file
-    with open(filePath, "a") as file:
-        file.write("\nBalance Sheet\n")
-        file.write(balance_sheet)
-        file.write("\nCash Flow\n")
-        file.write(cash_flow)
-        file.write("\nIncome Statement\n")
-        file.write(income_statement)
-        file.write("\nValuation Measures\n")
-        file.write(valuation_measures)
+    
+    # Add all the information into one string
+    fulltext = (
+        "\nBalance Sheet\n"
+        + balance_sheet
+        + "\nCash Flow\n"
+        + cash_flow
+        + "\nIncome Statement\n"
+        + income_statement
+        + "\nValuation Measures\n"
+        + valuation_measures
+    )
+    return fulltext
