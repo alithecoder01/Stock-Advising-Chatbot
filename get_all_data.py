@@ -9,7 +9,7 @@ def get_all_data(company_name, company_ticker, period, filename):
 
     stock = get_stock_evolution(filename, company_ticker, period)
 
-    statement = get_financial_statements(company_ticker, filename)
+    statments = get_financial_statements(company_ticker, filename)
 
     data = {'news_results': news, 'stock_results': stock, 'statments_results': statments}
     database_url = f"https://stock-advisor-86cc2-default-rtdb.europe-west1.firebasedatabase.app/data/{company_name}/{period}/info.json"
