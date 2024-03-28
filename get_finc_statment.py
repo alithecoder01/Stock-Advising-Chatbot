@@ -12,13 +12,13 @@ def get_financial_statements(ticker):
         # trailing is the Consolidated Cash Flow of the Company during the most recent four fiscal quarters of the Company for which financial statements are available.
         cash_flow = company.cash_flow(trailing=False).to_string()
         income_statement = company.income_statement().to_string()
-        valuation_measures = str(company.valuation_measures) 
+        valuation_measures = str(company.valuation_measures)
     except:
-        balance_sheet= "None"
+        balance_sheet = "None"
         cash_flow = "None"
         income_statement = "None"
         valuation_measures = "None"
-    
+
     # Add all the information into one string
     fulltext = (
         "\nBalance Sheet\n"

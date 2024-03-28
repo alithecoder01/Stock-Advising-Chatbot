@@ -4,7 +4,7 @@ from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from get_all_data import get_all_data
 
 
-filePath = "/Users/3lihasan/Documents/UNI/499/test.txt"
+
 
 
 def analyse(request, History):
@@ -53,6 +53,8 @@ def analyse(request, History):
         "arguments"
     ]
 
+    # variable (content) to save the feeded up data
+    content = ""
     if argument:
         # Parse the arguments from a JSON string to a Python dictionary
         try:
@@ -64,13 +66,13 @@ def analyse(request, History):
 
             except:
                 period = "1y"
-
-            get_all_data(company_name, company_ticker, period, filePath)
+            
+            # Save the information in the content variable
+            content = get_all_data(company_name, company_ticker, period)
         except:
             print("Not Founded")
 
-        with open(filePath, "r") as file:
-            content = file.read()[:14000]
+        print(content)
 
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
         message = [
@@ -101,11 +103,11 @@ def analyse(request, History):
         return respns
 
 
-# messages = []
-# while True:
+messages = []
+while True:
 
-#     request = input()
-#     response = analyse(request, messages)
-#     print(response)
-#     messages.append(request)
-#     messages.append(response)
+    request = input()
+    response = analyse(request, messages)
+    print(response)
+    messages.append(request)
+    messages.append(response)

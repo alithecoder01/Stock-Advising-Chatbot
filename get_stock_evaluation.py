@@ -16,4 +16,3 @@ def get_stock_evolution(company_name, period):
     full_text = f"\nStock Evolution for {company_name}:\n"
     full_text = full_text + data_string + "\n"
     return full_text
-        
