@@ -16,20 +16,6 @@ def get_comp_news(company_name,period):
     }
     response = requests.get('https://serpapi.com/search', params=params)
     data = response.json()
-    news = data.get('news_results')
 
-    return news
+    return data.get('news_results')
 
-
-
-# function for saving the news in .txt file
-def save_news_txt(news, filePath):
-    with open(filePath, 'w') as file:
-        for news_item in news:
-            if news_item is not None:
-                title = news_item.get('title', 'No title')
-                link = news_item.get('link', 'No link')
-                date = news_item.get('date', 'No date')
-                file.write(f"Title: {title}\n")
-                file.write(f"Link: {link}\n")
-                file.write(f"Date: {date}\n\n")
