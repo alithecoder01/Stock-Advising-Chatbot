@@ -7,6 +7,7 @@ from get_all_data import get_all_data
 
 
 
+
 def analyse(request, History):
     messages = [
         SystemMessage(
@@ -65,7 +66,7 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "1y"
+                period = "6m"
             
             # Save the information in the content variable
             content = get_all_data(company_name, company_ticker, period)
