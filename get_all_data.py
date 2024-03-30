@@ -16,6 +16,7 @@ def get_all_data(company_name, company_ticker, period):
         "stock_results": stock,
         "statments_results": statments,
     }
+    print(news)
     database_url = f"https://stock-advisor-9bc47-default-rtdb.europe-west1.firebasedatabase.app/data/{company_name}/{period}/Info.json"
 
     requests.put(database_url, json=data)

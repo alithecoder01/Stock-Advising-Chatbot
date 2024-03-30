@@ -61,6 +61,7 @@ def analyse(request, History):
         try:
             argument = json.loads(argument)
             company_name = argument["company_name"]
+            
             company_ticker = argument["company_ticker"]
             try:
                 period = argument["period"]
