@@ -62,7 +62,7 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "1m"
+                period = "6m"
             
             # Save the information in the content variable
             content = get_all_data(company_name, company_ticker, period)
