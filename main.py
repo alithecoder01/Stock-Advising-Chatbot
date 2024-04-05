@@ -4,10 +4,6 @@ from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from get_all_data import get_all_data
 
 
-
-
-
-
 def analyse(request, History):
     messages = [
         SystemMessage(
@@ -74,7 +70,7 @@ def analyse(request, History):
             print("Not Founded")
 
         
-
+        # gpt-4-0125-preview, the model that we will use to generate the response
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
         message = [
             SystemMessage(
@@ -104,11 +100,11 @@ def analyse(request, History):
         return respns
 
 
-# messages = []
-# while True:
+messages = []
+while True:
 
-#     request = input()
-#     response = analyse(request, messages)
-#     print(response)
-#     messages.append(request)
-#     messages.append(response)
+    request = input()
+    response = analyse(request, messages)
+    print(response)
+    messages.append(request)
+    messages.append(response)
