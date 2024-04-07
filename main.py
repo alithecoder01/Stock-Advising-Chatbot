@@ -63,7 +63,7 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "1m"
+                period = "8M"
             
         except:
             print("No Data Founded")
