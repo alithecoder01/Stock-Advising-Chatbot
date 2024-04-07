@@ -1,6 +1,7 @@
 import json
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from db import Db_check
 from get_all_data import get_all_data
 
 
@@ -62,14 +63,24 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "6m"
+                period = "3d"
             
             # Save the information in the content variable
-            content = get_all_data(company_name, company_ticker, period)
+            
         except:
-            print("Not Founded")
-
+            print("No Data Founded")
         
+        db_data = Db_check(company_name, period)
+        print(db_data)
+
+        if db_data =="None":
+            print("yes")
+            print(company_name, company_ticker, period)
+        else:
+            print("No")
+            
+
+
         # gpt-4-0125-preview, the model that we will use to generate the response
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)
         message = [
