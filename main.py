@@ -63,23 +63,18 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "3d"
-            
-            # Save the information in the content variable
+                period = "1m"
             
         except:
             print("No Data Founded")
         
+        # check if the data is already in the database
         db_data = Db_check(company_name, period)
-        print(db_data)
-
-        if db_data =="None":
-            print("yes")
-            print(company_name, company_ticker, period)
+        
+        if db_data == None:
+            content = get_all_data(company_name, company_ticker, period)
         else:
-            print("No")
-            
-
+            content = db_data
 
         # gpt-4-0125-preview, the model that we will use to generate the response
         model = ChatOpenAI(model="gpt-3.5-turbo", temperature=1, verbose=True)

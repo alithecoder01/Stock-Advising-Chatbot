@@ -14,9 +14,6 @@ def Db_check(company_name, period):
 
     if response.status_code == 200:
         data = response.json()
-        
         return data
     else:
-        print("Failed to retrieve data:", response.status_code)
-
-    return data
+        return None
