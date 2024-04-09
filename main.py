@@ -1,7 +1,8 @@
 import json
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
-from db import Db_check
+from check_data_db import check_data_db
+from delete_data import delete_data
 from get_all_data import get_all_data
 
 
@@ -68,8 +69,10 @@ def analyse(request, History):
         except:
             print("No Data Founded")
         
+        # delete the old data from the database
+        delete_data(company_name, period)
         # check if the data is already in the database
-        db_data = Db_check(company_name, period)
+        db_data = check_data_db(company_name, period)
         
         if db_data == None:
             content = get_all_data(company_name, company_ticker, period)
