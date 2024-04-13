@@ -1,13 +1,12 @@
 import requests
 
-def check_data_db(company_name, period):
-    company_name= company_name
-    period = period
+def check_data_db(company_name, period,today):
     query = {
         "company_name":f"{company_name}",
         "period":f"{period}"
     }
-    database_url=f"https://stock-advisor-9bc47-default-rtdb.europe-west1.firebasedatabase.app/data/{company_name}/{period}/Info.json"
+    # need to change the url to the correct one cc: date to today Variable
+    database_url=f"https://stock-advisor-9bc47-default-rtdb.europe-west1.firebasedatabase.app/data/{today}/{company_name}/{period}/Info.json"
 
     response = requests.get(database_url, params=query)
     

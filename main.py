@@ -1,4 +1,5 @@
 import json
+from datetime import date
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from check_data_db import check_data_db
@@ -32,7 +33,7 @@ def analyse(request, History):
                 "period": {"type": "string", "description": "The period of analysis"},
                 "filename": {
                     "type": "string",
-                    "description": "the filename to store data",
+                    "description": "the period of the data to be analyzed in this form, 1y for one year, 1mo from one month and 1d for one day",
                 },
             },
             "required": ["company_name", "company_ticker"],
@@ -69,13 +70,14 @@ def analyse(request, History):
         except:
             print("No Data Founded")
         
+        today= date.today().day
         # delete the old data from the database
-        delete_data(company_name, period)
+        delete_data(today)
         # check if the data is already in the database
-        db_data = check_data_db(company_name, period)
+        db_data = check_data_db(company_name, period,today)
         
         if db_data == None:
-            content = get_all_data(company_name, company_ticker, period)
+            content = get_all_data(company_name, company_ticker, period,today)
         else:
             content = db_data
 
