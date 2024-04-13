@@ -65,7 +65,7 @@ def analyse(request, History):
                 period = argument["period"]
 
             except:
-                period = "8M"
+                period = "1mo"
             
         except:
             print("No Data Founded")
@@ -109,4 +109,3 @@ def analyse(request, History):
         respns = model.invoke(message).content
         # print(message)
         return respns
-
