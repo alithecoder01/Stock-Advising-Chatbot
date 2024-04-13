@@ -110,12 +110,3 @@ def analyse(request, History):
         # print(message)
         return respns
 
-
-messages = []
-while True:
-
-    request = input()
-    response = analyse(request, messages)
-    print(response)
-    messages.append(request)
-    messages.append(response)
