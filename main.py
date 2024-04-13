@@ -10,7 +10,7 @@ from get_all_data import get_all_data
 def analyse(request, History):
     messages = [
         SystemMessage(
-            content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticke. provide the period needed, if not mentioned in the request make it 1y by defaultr"
+            content="You are a helpful assistant that find the name of the company and the stock ticker of it and you must give just the company name and the stock ticke. Provide the period needed. If the stock is not available, tell the user that the stock is not found and don't give a response."
         ),
         HumanMessage(
             content=f"Given the user request, what is the comapany name and the company stock ticker ?: {request}?"
