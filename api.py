@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-# from analysing import analyse
 from main import analyse
 
 app = Flask(__name__)
