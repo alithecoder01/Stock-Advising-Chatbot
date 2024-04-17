@@ -5,10 +5,10 @@ from main import analyse
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-async def welcome():
+async def respons():
     
-    requestt = request.get_json()
-    response = analyse(requestt['query'], requestt['history'])
+    create_raquest = request.get_json()
+    response = analyse(create_raquest['query'], create_raquest['history'])
     
     return jsonify(response)
 
