@@ -12,7 +12,6 @@ def get_company_news(company_name, period):
         "tbm": "nws",
         "q": company_name,
         "api_key": os.environ["SERPAPI_API_KEY"],
-        # "date_range": "2023-01-01:2023-01-31",
         "period": f"{period}",
     }
     response = requests.get("https://serpapi.com/search", params=params)
