@@ -17,6 +17,6 @@ def delete_data(today):
                 url_delete = f"https://stock-advisor-9bc47-default-rtdb.europe-west1.firebasedatabase.app/data/{day}.json"
                 requests.delete(url_delete)
             elif int(day) == today:
-                print("Data today not deleted")
+                print("")
     except:
         print("No data founded")
