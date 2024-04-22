@@ -37,6 +37,10 @@ SERPAPI_API_KEY="Your Key"
 
 ### 9. Create code for getting the company name, ticker and the respons, click here for resource code [Code](main.py)
 
+### 10. Create code for checking if the data exist in DB or not, click here for resource code [Code](check_data.py)
+
+### 11. Create code for deleting the old data exist in DB, click here for resource code [Code](delete_data.py)
+
 
 
 
