@@ -107,5 +107,4 @@ def analyse(request, History):
         prompt = HumanMessage(content=request)
         message.append(prompt)
         respns = model.invoke(message).content
-        # print(message)
         return respns
